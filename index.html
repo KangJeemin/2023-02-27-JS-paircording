@@ -11,7 +11,8 @@
   <script>
     let root = document.getElementById("root");
     let sibling = root.children;
-    root.style.position
+    let a =0;
+
     // function adddiv(){
     //   let divNow = document.createElement("div");
     //   root.appendChild(divNow);
@@ -44,7 +45,8 @@
     }
     function setBackgroundcolorAndFilter(num,backgroundcolor,filter){
       root.children[num].style.backgroundColor=`${backgroundcolor}`;
-      root.children[num].style.filter = `blur(${filter})px`;
+      root.children[num].style.filter = "blur("+filter+"px)"
+      console.log("check")
     }
     function setMargin(obj,top,left,right,bottom) {
       obj.style.marginTop=`${top}px`;
@@ -53,7 +55,7 @@
       obj.style.marginBottom=`${bottom}px`;
     }  
     function setBorderRadius(obj,num) {
-      obj.style.bordeRadius=`${num}px`;
+      obj.style.borderRadius=`${num}px`;
     }
     function setOpacity(obj,num){
       obj.style.opacity=`${num}`;
@@ -66,32 +68,36 @@
     setFlex(root,"center","center")
     setRelative(root)
 
-    setWidthAndHeight(0,500,500)
-    setWidthAndHeight(1,500,500)
-    setWidthAndHeight(2,500,500)
-    setBorderRadius(sibling[0],250)
-    setBorderRadius(sibling[1],250)
-    setBorderRadius(sibling[2],250)
-    setOpacity(sibling[0],0.8)
-    setOpacity(sibling[1],0.8)
-    setOpacity(sibling[2],0.8)
-    setRelative(sibling[0])
-    setRelative(sibling[1])
-    setRelative(sibling[2])
-
+    for (let i=0;i<3;i++){
+      setWidthAndHeight(i,500,500)
+      setBorderRadius(sibling[i],250)
+      setOpacity(sibling[i],0.8)
+      setRelative(sibling[i])
+    }
+        
     setMargin(sibling[0],300,300,0,0)
     setMargin(sibling[1],50,-50,0,0)
     setMargin(sibling[2],100,50,0,0)
 
-    setBackgroundcolorAndFilter(0,"red",20)
-    setBackgroundcolorAndFilter(1,"cornflowerblue",20)
-    setBackgroundcolorAndFilter(2,"coral",10)
-
-    console.dir(root)
+    setBackgroundcolorAndFilter(0,"red",12)
+    setBackgroundcolorAndFilter(1,"cornflowerblue",13)
+    setBackgroundcolorAndFilter(2,"coral",14)
     
+    console.dir(root)
+    console.dir(sibling)
 
-
-
+    
+    
+    sibling[0].addEventListener("click",()=>{
+      a++;
+      console.log(a);
+      if (a%2==0){
+        sibling[0].style.backgroundColor="green";
+      }
+      else{
+        sibling[0].style.backgroundColor="blue";
+      }
+    })
 
     
 
